@@ -36,7 +36,6 @@ class authorController {
 
   static updateAuthor = (req, res) => {
     const id = req.params.id;
-
     authors.findByIdAndUpdate(id, { $set: req.body }, (err) => {
       if (!err) {
         res.status(200).send({ message: "Autor atualizado com sucesso" });
@@ -48,7 +47,6 @@ class authorController {
 
   static deleteAuthor = (req, res) => {
     const id = req.params.id;
-
     authors.findByIdAndDelete(id, (err) => {
       if (!err) {
         res.status(200).send({ message: "Autor removido com sucesso" });
