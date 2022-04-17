@@ -9,38 +9,7 @@ db.once("open", () => {
 });
 
 const app = express();
-
 app.use(express.json());
-
 routes(app);
 
-// const livros = [
-//   {
-//     id: 1,
-//     titulo: "O iluminado",
-//   },
-//   { id: 2, titulo: "Zona morta" },
-// ];
-
-app.get("/livros/:id", (req, res) => {
-  let index = buscaLivro(req.params.id);
-  res.json(books[index]);
-});
-
-app.put("/livros/:id", (req, res) => {
-  let index = buscaLivro(req.params.id);
-  books[index].titulo = req.body.titulo;
-  res.json(books);
-});
-
-app.delete("/livros/:id", (req, res) => {
-  let { id } = req.params;
-  let index = buscaLivro(id);
-  books.splice(index, 1);
-  res.send(`Livro ${id} removido com sucesso`);
-});
-
-function buscaLivro(id) {
-  return books.findIndex((livro) => livro.id == id);
-}
 export default app;
